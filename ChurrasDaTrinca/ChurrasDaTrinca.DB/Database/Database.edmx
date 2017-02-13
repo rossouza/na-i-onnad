@@ -1,0 +1,206 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="CHURRASModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Churrasco">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Data" Type="datetime" Nullable="false" />
+          <Property Name="Razao" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Obs" Type="varchar" MaxLength="140" />
+        </EntityType>
+        <EntityType Name="ChurrascoParticipante">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdChurrasco" Type="int" Nullable="false" />
+          <Property Name="IdParticipante" Type="int" Nullable="false" />
+          <Property Name="Contribuicao" Type="decimal" Precision="5" Scale="2" />
+          <Property Name="CheckBebida" Type="bit" Nullable="false" />
+          <Property Name="CheckPago" Type="bit" Nullable="false" />
+          <Property Name="Obs" Type="varchar" MaxLength="140" />
+        </EntityType>
+        <EntityType Name="Participante">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nome" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Churrasco__IdChu__173876EA">
+          <End Role="Churrasco" Type="Self.Churrasco" Multiplicity="1" />
+          <End Role="ChurrascoParticipante" Type="Self.ChurrascoParticipante" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Churrasco">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ChurrascoParticipante">
+              <PropertyRef Name="IdChurrasco" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Churrasco__IdPar__182C9B23">
+          <End Role="Participante" Type="Self.Participante" Multiplicity="1" />
+          <End Role="ChurrascoParticipante" Type="Self.ChurrascoParticipante" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Participante">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ChurrascoParticipante">
+              <PropertyRef Name="IdParticipante" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CHURRASModelStoreContainer">
+          <EntitySet Name="Churrasco" EntityType="Self.Churrasco" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ChurrascoParticipante" EntityType="Self.ChurrascoParticipante" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Participante" EntityType="Self.Participante" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Churrasco__IdChu__173876EA" Association="Self.FK__Churrasco__IdChu__173876EA">
+            <End Role="Churrasco" EntitySet="Churrasco" />
+            <End Role="ChurrascoParticipante" EntitySet="ChurrascoParticipante" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Churrasco__IdPar__182C9B23" Association="Self.FK__Churrasco__IdPar__182C9B23">
+            <End Role="Participante" EntitySet="Participante" />
+            <End Role="ChurrascoParticipante" EntitySet="ChurrascoParticipante" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CHURRASModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="CHURRASEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Churrascoes" EntityType="CHURRASModel.Churrasco" />
+          <EntitySet Name="ChurrascoParticipantes" EntityType="CHURRASModel.ChurrascoParticipante" />
+          <EntitySet Name="Participantes" EntityType="CHURRASModel.Participante" />
+          <AssociationSet Name="FK__Churrasco__IdChu__173876EA" Association="CHURRASModel.FK__Churrasco__IdChu__173876EA">
+            <End Role="Churrasco" EntitySet="Churrascoes" />
+            <End Role="ChurrascoParticipante" EntitySet="ChurrascoParticipantes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Churrasco__IdPar__182C9B23" Association="CHURRASModel.FK__Churrasco__IdPar__182C9B23">
+            <End Role="Participante" EntitySet="Participantes" />
+            <End Role="ChurrascoParticipante" EntitySet="ChurrascoParticipantes" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Churrasco">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Data" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Razao" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Obs" Type="String" MaxLength="140" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ChurrascoParticipantes" Relationship="CHURRASModel.FK__Churrasco__IdChu__173876EA" FromRole="Churrasco" ToRole="ChurrascoParticipante" />
+        </EntityType>
+        <EntityType Name="ChurrascoParticipante">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdChurrasco" Type="Int32" Nullable="false" />
+          <Property Name="IdParticipante" Type="Int32" Nullable="false" />
+          <Property Name="Contribuicao" Type="Decimal" Precision="5" Scale="2" />
+          <Property Name="CheckBebida" Type="Boolean" Nullable="false" />
+          <Property Name="CheckPago" Type="Boolean" Nullable="false" />
+          <Property Name="Obs" Type="String" MaxLength="140" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Churrasco" Relationship="CHURRASModel.FK__Churrasco__IdChu__173876EA" FromRole="ChurrascoParticipante" ToRole="Churrasco" />
+          <NavigationProperty Name="Participante" Relationship="CHURRASModel.FK__Churrasco__IdPar__182C9B23" FromRole="ChurrascoParticipante" ToRole="Participante" />
+        </EntityType>
+        <EntityType Name="Participante">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nome" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ChurrascoParticipantes" Relationship="CHURRASModel.FK__Churrasco__IdPar__182C9B23" FromRole="Participante" ToRole="ChurrascoParticipante" />
+        </EntityType>
+        <Association Name="FK__Churrasco__IdChu__173876EA">
+          <End Type="CHURRASModel.Churrasco" Role="Churrasco" Multiplicity="1" />
+          <End Type="CHURRASModel.ChurrascoParticipante" Role="ChurrascoParticipante" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Churrasco">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ChurrascoParticipante">
+              <PropertyRef Name="IdChurrasco" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Churrasco__IdPar__182C9B23">
+          <End Type="CHURRASModel.Participante" Role="Participante" Multiplicity="1" />
+          <End Type="CHURRASModel.ChurrascoParticipante" Role="ChurrascoParticipante" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Participante">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ChurrascoParticipante">
+              <PropertyRef Name="IdParticipante" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CHURRASModelStoreContainer" CdmEntityContainer="CHURRASEntities">
+          <EntitySetMapping Name="Churrascoes">
+            <EntityTypeMapping TypeName="CHURRASModel.Churrasco">
+              <MappingFragment StoreEntitySet="Churrasco">
+                <ScalarProperty Name="Obs" ColumnName="Obs" />
+                <ScalarProperty Name="Razao" ColumnName="Razao" />
+                <ScalarProperty Name="Data" ColumnName="Data" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ChurrascoParticipantes">
+            <EntityTypeMapping TypeName="CHURRASModel.ChurrascoParticipante">
+              <MappingFragment StoreEntitySet="ChurrascoParticipante">
+                <ScalarProperty Name="Obs" ColumnName="Obs" />
+                <ScalarProperty Name="CheckPago" ColumnName="CheckPago" />
+                <ScalarProperty Name="CheckBebida" ColumnName="CheckBebida" />
+                <ScalarProperty Name="Contribuicao" ColumnName="Contribuicao" />
+                <ScalarProperty Name="IdParticipante" ColumnName="IdParticipante" />
+                <ScalarProperty Name="IdChurrasco" ColumnName="IdChurrasco" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Participantes">
+            <EntityTypeMapping TypeName="CHURRASModel.Participante">
+              <MappingFragment StoreEntitySet="Participante">
+                <ScalarProperty Name="Nome" ColumnName="Nome" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

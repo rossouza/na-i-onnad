@@ -1,0 +1,142 @@
+﻿@model ChurrasDaTrinca.DB.ViewModel.DetailsVM
+@{
+    ViewBag.Title = "Visualizar Churrasco";
+}
+
+<script type="text/javascript">
+	$(document).ready(function () {
+		$('input[type=checkbox].chkPago').change(function () {
+			var elementoChk = $(this);
+			var idChurrascoParticipante = $(this).val();
+
+			$.ajax({
+				url: '@Url.Action("CheckPago", "Churrasco")',
+				data: { idCP: idChurrascoParticipante },
+				method: 'POST',
+				success: function () {
+					 Materialize.toast('Registro atualizado', 4000);
+					 $(elementoChk).attr('disabled','disabled');
+				}
+			});
+		});
+	});
+</script>
+
+<div class="row">
+
+    <div class="col s12 m12 l12">
+
+        <span><br /><b>Quando?</b><br /></span>
+        <span>@Model.churrasco.Data.ToString("dd/MM/yyyy")</span>
+
+    </div>
+
+</div>
+
+<div class="row">
+
+    <div class="col s12 m12 l12">
+
+        <span><br /><b>Por quê?</b><br /></span>
+        <span>@Model.churrasco.Razao</span>
+
+    </div>
+
+</div>
+
+<div class="row">
+
+    <div class="col s12 m12 l12">
+
+        <span><br /><b>Observações</b><br /></span>
+        <span>@Model.churrasco.Obs</span>
+
+    </div>
+
+</div>
+
+<div class="row">
+
+    <div class="col s12 m12 l12">
+
+        <button type="submit" title="Adicionar participante" class="waves-effect waves-light btn purple lighten-1">Adicionar participante</button>
+
+    </div>
+
+</div>
+
+<div class="row">
+
+    <div class="col s12 m12 l12">
+
+        <span><br /><b>Participantes</b><br /></span>
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th data-field="nome">Nome</th>
+                    <th data-field="contribuicao">Contribuição</th>
+                    <th data-field="checkBebida">Bebida?</th>
+                    <th data-field="checkPago">Pago?</th>
+                    <th data-field="obs">Observações</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                @foreach(var item in Model.cpVMList)
+                {
+
+                    <tr>
+
+                        <td>@Model.partVMList.FirstOrDefault(k => k.Id == item.IdParticipante).Nome</td>
+                        <td>@item.Contribuicao</td>
+                        <td>@if (item.CheckBebida)
+                        {
+
+                            <input type="checkbox" id="checkBebida" checked="checked" disabled="disabled"/>
+                            <label for="checkBebida"></label>
+
+                        }
+                       </td>
+                        <td>@if (item.CheckPago)
+                        {
+
+                            <input type="checkbox" id="checkPago" checked="checked" disabled="disabled" />
+                            <label for="checkPago"></label>
+
+                        }
+                        else
+                        {
+
+                            <input type="checkbox" id="chkPago" value="@item.Id" class="chkPago" />
+                            <label for="chkPago"></label>
+
+                        }</td>
+                        <td>@item.Obs</td>
+
+                    </tr>
+
+                }
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+<div class="row">
+
+    <div class="col s12 m12 l12">
+
+        <a class="waves-effect waves-light btn purple lighten-1" href="@Url.Action("Edit", "Churrasco", new { id = Model.churrasco.Id })" >Editar</a>
+
+    </div>
+
+</div>

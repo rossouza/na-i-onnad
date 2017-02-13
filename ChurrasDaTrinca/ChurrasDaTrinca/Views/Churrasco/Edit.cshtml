@@ -1,0 +1,57 @@
+﻿@model ChurrasDaTrinca.DB.ViewModel.ChurrascoVM
+@{ 
+    ViewBag.Title = "Editar Churrasco";
+}
+
+@using (Html.BeginForm("Edit", "Churrasco", FormMethod.Post))
+{
+<div class="row">
+
+    @Html.HiddenFor(k => k.Id)
+
+    <div class="col s12 m12 l12 input-field">
+        @Html.LabelFor(k => k.Data)
+        @Html.TextBox("Data", Model.Data.ToString("dd/MM/yyyy"), new {@class = "datepicker" })
+        @Html.ValidationMessageFor(k => k.Data)
+
+    </div>
+
+    <div class="col s12 m12 l12 input-field">
+
+        @Html.TextBoxFor(k => k.Razao)
+        @Html.LabelFor(k => k.Razao)
+        @Html.ValidationMessageFor(k => k.Razao)
+
+    </div>
+
+    <div class="col s12 m12 l12 input-field">
+
+        @Html.TextAreaFor(k => k.Obs, new { @class = "materialize-textarea", @data_length = "140" })
+        @Html.LabelFor(k => k.Obs)
+        @Html.ValidationMessageFor(k => k.Obs)
+
+    </div>
+
+    <div class="col s12 m12 l12">
+
+        <p>
+
+            Valor de contribuição sugerido<br /><br />
+            Com bebida: <b>R$ 30,00</b><br />
+            Sem bebida: <b>R$ 15,00</b>
+
+        </p>
+
+    </div>
+
+</div>
+    <div class="row">
+
+        <div class="col s12 m12 l12">
+
+            <button type="submit" title="Salvar" class="waves-effect waves-light btn purple lighten-1">Salvar</button>
+
+        </div>
+
+    </div>
+}

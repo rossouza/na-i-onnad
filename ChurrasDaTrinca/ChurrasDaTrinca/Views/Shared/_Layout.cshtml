@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Churras da Trinca</title>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
+    <link rel="stylesheet" href="@Url.Content("~/Content/Site.css")">
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"
+            integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+            crossorigin="anonymous"></script>
+
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
+
+    <script type="text/javascript">
+        $.extend($.fn.pickadate.defaults, {
+            monthsFull: ['janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho', 'julho', 'agosto', 'setembro', 'outubro', 'novembro', 'dezembro'],
+            monthsShort: ['jan', 'fev', 'mar', 'abr', 'mai', 'jun', 'jul', 'ago', 'set', 'out', 'nov', 'dez'],
+            weekdaysFull: ['domingo', 'segunda-feira', 'terça-feira', 'quarta-feira', 'quinta-feira', 'sexta-feira', 'sábado'],
+            weekdaysShort: ['dom', 'seg', 'ter', 'qua', 'qui', 'sex', 'sab'],
+            weekdaysLetter: ['D', 'S', 'T', 'Q', 'Q', 'S', 'S'],
+            labelMonthSelect: 'Selecionar Mês',
+            labelYearSelect: 'Selecionar Ano',
+            today: 'hoje',
+            clear: 'limpar',
+            close: 'fechar',
+            labelMonthNext: 'Próximo',
+            labelMonthPrev: 'Anterior',
+            formatSubmit: 'yyyy/mm/dd'
+        });
+        $(document).ready(function () {
+
+            $('.datepicker').pickadate({
+                selectMonths: true,
+                selectYears: 15,
+                formatSubmit: 'yyyy/mm/dd',
+                format: 'dd/mm/yyyy'
+            });
+        });
+
+       
+
+    </script>
+</head>
+<body>
+    <div class="navbar-fixed">
+        <nav>
+            <div class="nav-wrapper purple darken-3">
+                <a href="@Url.Action("Index", "Churrasco")" class="brand-logo center">Churras da Trinca</a>
+            </div>
+        </nav>
+    </div>
+    <div class="main-content center-block">
+
+        @RenderBody()
+
+    </div>
+
+</body>
+</html>

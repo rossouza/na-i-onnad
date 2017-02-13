@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChurrasDaTrinca", "ChurrasDaTrinca\ChurrasDaTrinca.csproj", "{A64FAC87-EF3A-4A36-B0F8-00DD6CDDBDEF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChurrasDaTrinca.DB", "ChurrasDaTrinca.DB\ChurrasDaTrinca.DB.csproj", "{004BE16A-34F3-4681-91B3-1747DDDECE7A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A64FAC87-EF3A-4A36-B0F8-00DD6CDDBDEF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A64FAC87-EF3A-4A36-B0F8-00DD6CDDBDEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A64FAC87-EF3A-4A36-B0F8-00DD6CDDBDEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A64FAC87-EF3A-4A36-B0F8-00DD6CDDBDEF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{004BE16A-34F3-4681-91B3-1747DDDECE7A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{004BE16A-34F3-4681-91B3-1747DDDECE7A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{004BE16A-34F3-4681-91B3-1747DDDECE7A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{004BE16A-34F3-4681-91B3-1747DDDECE7A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

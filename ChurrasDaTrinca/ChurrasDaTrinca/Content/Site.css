@@ -1,0 +1,11 @@
+﻿/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+div.main-content {
+
+    width: 60%;
+
+}
