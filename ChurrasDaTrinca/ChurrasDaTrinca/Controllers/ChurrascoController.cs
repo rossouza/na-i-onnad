@@ -74,6 +74,73 @@ namespace ChurrasDaTrinca.Controllers
 
         }
 
+        [HttpPost]
+        public ActionResult AddPart(DetailsVM dVM)
+        {
+
+
+            if (ModelState.IsValid)
+            {
+
+                
+
+                return RedirectToAction("Details", "Churrasco", new { id = dVM.churrasco.Id });
+
+            }
+            else
+            {
+
+                return View(dVM);
+
+            }
+
+
+        }
+
+        public ActionResult AddPart(int id)
+        {
+
+            Churrasco dbChurrasco = churrascoManager.Get(k => k.Id == id);
+            List<ChurrascoParticipante> cpList = cpManager.GetList(k => k.IdChurrasco == id);
+            List<ChurrascoParticipanteVM> cpVMList = new List<ChurrascoParticipanteVM>();
+            ChurrascoVM churrasVM = new ChurrascoVM();
+            List<ParticipanteVM> partVMList = new List<ParticipanteVM>();
+
+            churrasVM.Id = dbChurrasco.Id;
+            churrasVM.Data = dbChurrasco.Data;
+            churrasVM.Razao = dbChurrasco.Razao;
+            churrasVM.Obs = dbChurrasco.Obs;
+
+            foreach (ChurrascoParticipante cParticipante in cpList)
+            {
+
+                ChurrascoParticipanteVM cpVM = new ChurrascoParticipanteVM();
+                ParticipanteVM partVM = new ParticipanteVM();
+                Participante participante = participanteManager.Get(k => k.Id == cParticipante.IdParticipante);
+                partVM.Id = participante.Id;
+                partVM.Nome = participante.Nome;
+                cpVM.Id = cParticipante.Id;
+                cpVM.IdChurrasco = cParticipante.IdChurrasco;
+                cpVM.IdParticipante = cParticipante.IdParticipante;
+                cpVM.Contribuicao = cParticipante.Contribuicao;
+                cpVM.CheckBebida = cParticipante.CheckBebida;
+                cpVM.CheckPago = cParticipante.CheckPago;
+                cpVM.Obs = cParticipante.Obs;
+                cpVMList.Add(cpVM);
+                partVMList.Add(partVM);
+
+            }
+
+            DetailsVM dVM = new DetailsVM();
+
+            dVM.churrasco = churrasVM;
+            dVM.cpVMList = cpVMList;
+            dVM.partVMList = partVMList;
+
+            return View(dVM);
+
+        }
+
         public void CheckPago(int idCP)
         {
 

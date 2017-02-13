@@ -184,6 +184,7 @@
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Views\Churrasco\Details.cshtml" />
+    <Content Include="Views\Churrasco\AddPart.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ChurrasDaTrinca.DB\ChurrasDaTrinca.DB.csproj">

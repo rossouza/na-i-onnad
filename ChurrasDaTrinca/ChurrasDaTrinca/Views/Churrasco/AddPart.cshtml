@@ -1,0 +1,50 @@
+﻿@model ChurrasDaTrinca.DB.ViewModel.DetailsVM
+@{
+    ViewBag.Title = "Adicionar Participante";
+}
+
+<script type="text/javascript">
+  $('.dropdown-button').dropdown({
+      inDuration: 300,
+      outDuration: 225,
+      constrainWidth: false, // Does not change width of dropdown to that of the activator
+      hover: true, // Activate on hover
+      gutter: 0, // Spacing from edge
+      belowOrigin: false, // Displays dropdown below the button
+      alignment: 'left', // Displays dropdown with edge aligned to the left of button
+      stopPropagation: false // Stops event propagation
+    }
+  );
+</script>
+
+<div class="row">
+
+        <div class="col s12 m12 l12">
+
+            <span><b>Adicionar Participantes</b></span>
+
+        </div>
+
+</div>
+
+<div class="row">
+
+    <a class="dropdown-button btn" href="#" data-activates="dropdown1">Selecionar Participante</a>
+
+    <ul id="dropdown1" class="dropdown-content">
+
+        
+
+        @{
+            
+            foreach (var item in Model.partVMList)
+                {
+
+                    <li><a href="#!" = item">@item.Nome</a></li>
+
+                }
+            }
+
+    </ul>
+
+</div>
