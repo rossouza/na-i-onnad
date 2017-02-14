@@ -59,6 +59,42 @@
 
     <div class="col s12 m12 l12">
 
+        <span><br /><b>Número de participantes</b><br /></span>
+        <span>@Model.cpVMList.Count</span>
+
+    </div>
+
+</div>
+
+<div class="row">
+
+    <div class="col s12 m12 l12">
+
+        <span><br /><b>Valor arrecadado</b><br /></span>
+        <span>
+
+            @{
+                decimal total = 0;
+                foreach (var item in Model.cpVMList)
+                {
+
+                    total += (decimal)item.Contribuicao;
+
+                }
+                @total
+            }
+
+
+        </span>
+
+    </div>
+
+</div>
+
+<div class="row">
+
+    <div class="col s12 m12 l12">
+
         <a class="waves-effect waves-light btn purple lighten-1" href="@Url.Action("AddPart", "Churrasco", new { id = Model.churrasco.Id } )">Adicionar Participante</a>
 
     </div>
