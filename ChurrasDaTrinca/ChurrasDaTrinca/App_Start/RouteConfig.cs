@@ -16,7 +16,7 @@ namespace ChurrasDaTrinca
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Churrasco", action = "Edit", id = UrlParameter.Optional }
+                defaults: new { controller = "Churrasco", action = "Index", id = UrlParameter.Optional }
             );
         }
     }

@@ -1,0 +1,55 @@
+﻿@model List<ChurrasDaTrinca.DB.ViewModel.ChurrascoVM>
+@{
+    ViewBag.Title = "Lista de Churrascos";
+}
+
+<div class="row">
+
+    <div class="col s12 m12 l12">
+        <br />
+        <a class="waves-effect waves-light btn purple lighten-1" href="@Url.Action("PartDB", "Churrasco")">Cadastrar possível participante</a>
+
+    </div>
+
+</div>
+
+<div class="row">
+
+    <div class="col s12 m12 l12">
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th data-field="date">Data</th>
+                    <th data-field="reason">Razão</th>
+                    <th data-field="details">Detalhes</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                @foreach (var item in Model.ToList())
+                {
+
+                    <tr>
+
+                        <td>@item.Data.ToString("dd/MM/yyyy")</td>
+                        <td>@item.Razao</td>
+                        <td><a class="waves-effect waves-light btn purple lighten-1" href="@Url.Action("Details", "Churrasco", new { id = item.Id } )">Ver</a></td>
+
+                    </tr>
+
+                }
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>

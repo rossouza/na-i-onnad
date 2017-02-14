@@ -49,5 +49,12 @@ namespace ChurrasDaTrinca.DB.Business
         {
             return context.Set<T>().FirstOrDefault(match);
         }
+
+        public List<T> SelectAll()
+        {
+
+            return context.Set<T>().ToList();
+
+        }
     }
 }

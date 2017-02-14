@@ -11,7 +11,7 @@
             integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
             crossorigin="anonymous"></script>
 
-
+    <script src="~/Content/jquery.mask.js"></script>
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
 
@@ -29,18 +29,20 @@
             close: 'fechar',
             labelMonthNext: 'Próximo',
             labelMonthPrev: 'Anterior',
-            formatSubmit: 'yyyy/mm/dd'
+            formatSubmit: 'yyyy/mm/dd',
+            format: 'yyyy/mm/dd'
         });
         $(document).ready(function () {
+
+            $('.moneyMask').mask('#.##0.00', { reverse: true });
 
             $('.datepicker').pickadate({
                 selectMonths: true,
                 selectYears: 15,
-                formatSubmit: 'yyyy/mm/dd',
-                format: 'dd/mm/yyyy'
             });
         });
 
+        
        
 
     </script>

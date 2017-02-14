@@ -59,7 +59,7 @@
 
     <div class="col s12 m12 l12">
 
-        <button type="submit" title="Adicionar participante" class="waves-effect waves-light btn purple lighten-1">Adicionar participante</button>
+        <a class="waves-effect waves-light btn purple lighten-1" href="@Url.Action("AddPart", "Churrasco", new { id = Model.churrasco.Id } )">Adicionar Participante</a>
 
     </div>
 
@@ -135,7 +135,7 @@
 
     <div class="col s12 m12 l12">
 
-        <a class="waves-effect waves-light btn purple lighten-1" href="@Url.Action("Edit", "Churrasco", new { id = Model.churrasco.Id })" >Editar</a>
+        <a class="waves-effect waves-light btn purple lighten-1" href="@Url.Action("Edit", "Churrasco", new { id = Model.churrasco.Id })" >Editar Churrasco</a>
 
     </div>
 

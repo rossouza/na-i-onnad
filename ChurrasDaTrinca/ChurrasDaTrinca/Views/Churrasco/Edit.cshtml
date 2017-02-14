@@ -11,7 +11,7 @@
 
     <div class="col s12 m12 l12 input-field">
         @Html.LabelFor(k => k.Data)
-        @Html.TextBox("Data", Model.Data.ToString("dd/MM/yyyy"), new {@class = "datepicker" })
+        @Html.TextBox("Data", Model.Data.ToString("yyyy/MM/dd"), new {@class = "datepicker" })
         @Html.ValidationMessageFor(k => k.Data)
 
     </div>

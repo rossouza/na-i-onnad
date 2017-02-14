@@ -1,0 +1,42 @@
+﻿@model ChurrasDaTrinca.DB.ViewModel.ParticipanteVM
+@{
+    ViewBag.Title = "Cadastrar possivel participante";
+}
+
+
+@using (Html.BeginForm("PartDB", "Churrasco", FormMethod.Post))
+{
+<div class="row">
+
+    <div class="col s12 m12 l12">
+
+        <span><b>Cadastrar novo participante no banco</b></span>
+
+    </div>
+
+</div>
+
+<div class="row">
+
+    @Html.HiddenFor(k => k.Id)
+
+    <div class="col s12 m12 l12 input-field">
+
+        @Html.TextBoxFor(k => k.Nome)
+        @Html.LabelFor(k => k.Nome)
+        @Html.ValidationMessageFor(k => k.Nome)
+
+    </div>
+
+</div>
+
+<div class="row">
+
+    <div class="col s12 m12 l12">
+
+        <button type="submit" title="Adicionar" class="waves-effect waves-light btn purple lighten-1">Adicionar</button>
+
+    </div>
+
+</div>
+}

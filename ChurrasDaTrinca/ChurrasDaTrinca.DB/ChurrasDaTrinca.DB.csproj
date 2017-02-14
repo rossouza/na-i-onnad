@@ -80,6 +80,7 @@
       <DependentUpon>Database.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModel\AddPartVM.cs" />
     <Compile Include="ViewModel\ChurrascoParticipanteVM.cs" />
     <Compile Include="ViewModel\ChurrascoVM.cs" />
     <Compile Include="ViewModel\DetailsVM.cs" />

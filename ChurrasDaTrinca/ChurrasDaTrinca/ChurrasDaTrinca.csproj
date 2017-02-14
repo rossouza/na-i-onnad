@@ -153,6 +153,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\jquery.mask.js" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -185,6 +186,8 @@
     <None Include="Project_Readme.html" />
     <Content Include="Views\Churrasco\Details.cshtml" />
     <Content Include="Views\Churrasco\AddPart.cshtml" />
+    <Content Include="Views\Churrasco\Index.cshtml" />
+    <Content Include="Views\Churrasco\PartDB.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ChurrasDaTrinca.DB\ChurrasDaTrinca.DB.csproj">
